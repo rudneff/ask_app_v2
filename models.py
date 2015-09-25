@@ -16,12 +16,14 @@ class Question(models.Model):
     tags = models.ForeignKey(Tags)
     rating = models.IntegerField(default=0)
 
+
 class Answer(models.Model):
     body = models.CharField(max_length=200)
     author = models.ForeignKey(User)
     date = models.DateField()
     flag = models.BooleanField(default=False)
     rating = models.IntegerField(default=0)
+
 
 class Tags(models.Model):
     text = models.CharField(max_length=20)
