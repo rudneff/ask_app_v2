@@ -1,3 +1,7 @@
 from django.contrib import admin
+from ask_app.models import *
 
-# Register your models here.
+admin.site.register(Question)
+admin.site.register(Answer)
+admin.site.register(Tags)
+admin.site.register(User)
