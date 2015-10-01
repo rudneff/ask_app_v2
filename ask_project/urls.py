@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^logout/', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout-page'),
 
     # question page; change views
-    url(r'^question/(?P<pk>\d+)/$', AskAppTemplateView.as_view(), name='question-page'),
+    url(r'^question/(?P<pk>\d+)/$', QuestionDetailView.as_view(), name='question-page'),
 
     url(r'^admin/', include(admin.site.urls)),
 ]
