@@ -7,6 +7,9 @@ class User(models.Model):
 
     meta = User
 
+class Tags(models.Model):
+    text = models.CharField(max_length=20)
+
 
 class Question(models.Model):
     header = models.CharField(max_length=100)
@@ -23,7 +26,3 @@ class Answer(models.Model):
     date = models.DateField()
     flag = models.BooleanField(default=False)
     rating = models.IntegerField(default=0)
-
-
-class Tags(models.Model):
-    text = models.CharField(max_length=20)
