@@ -7,7 +7,7 @@ class User(User):
 
 
 class Tags(models.Model):
-    text = models.CharField(max_length=20)
+    text = models.CharField(max_length=20, unique=True)
 
     def __str__(self):
         return self.text
@@ -18,7 +18,7 @@ class Question(models.Model):
     body = models.CharField(max_length=200)
     author = models.ForeignKey(User)
     date = models.DateField()
-    tags = models.ForeignKey(Tags)
+    tags = models.ManyToManyField(Tags)
     rating = models.IntegerField(default=0)
 
     def __str__(self):
@@ -28,6 +28,7 @@ class Question(models.Model):
 class Answer(models.Model):
     body = models.CharField(max_length=200)
     author = models.ForeignKey(User)
+    which_question = models.ForeignKey(Question)
     date = models.DateField()
     flag = models.BooleanField(default=False)
     rating = models.IntegerField(default=0)

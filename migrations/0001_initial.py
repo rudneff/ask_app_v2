@@ -64,11 +64,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='question',
             name='tags',
-            field=models.ForeignKey(to='ask_app.Tags'),
+            field=models.ManyToManyField(to='ask_app.Tags'),
         ),
         migrations.AddField(
             model_name='answer',
             name='author',
             field=models.ForeignKey(to='ask_app.User'),
+        ),
+        migrations.AddField(
+            model_name='answer',
+            name='which_question',
+            field=models.ForeignKey(to='ask_app.Question'),
         ),
     ]
