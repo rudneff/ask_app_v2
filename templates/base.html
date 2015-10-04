@@ -2,11 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Ask app</title>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'ask_app/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'ask_app/css/foundation.min.css' %}">
+
 </head>
 <body>
     ask app
     {% block content %}
     {% endblock %}
+
+    <script src="{% static 'ask_app/js/jquery.js' %}"></script>
+    <script src="{% static 'ask_app/js/foundation.min.js' %}"></script>
+
 </body>
 </html>
