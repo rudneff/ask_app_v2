@@ -12,7 +12,7 @@ urlpatterns = [
     # question pages
     url(r'^question/(?P<pk>\d+)/$', QuestionDetailView.as_view(), name='question-page'),
     url(r'^questions/$', QuestionListView.as_view(), name='question-page'),
-    url(r'^questions/$', QuestionListView.as_view(), name='question-page'),
+    # url(r'^questions/$', QuestionListView.as_view(), name='question-page'),
 
     url(r'^admin/', include(admin.site.urls)),
 ]
