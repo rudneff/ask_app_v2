@@ -2,13 +2,15 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import TemplateView, DeleteView, DetailView, ListView, UpdateView, CreateView, FormView
 from ask_app.models import *
-from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
+from ask_app.forms import *
+
 
 # class for template
 class AskAppTemplateView(TemplateView):
     template_name = 'base.html'
 
 # classes for working with Question models
+
 
 # show all questions
 class QuestionListView(ListView):
@@ -18,7 +20,7 @@ class QuestionListView(ListView):
 # create one question
 class QuestionCreateView(CreateView):
     model = Question
-    # add form_class =
+    form_class = CreateQuestion
     template_name_suffix = '_create_form'
 
 
@@ -49,7 +51,7 @@ class AnswerListView(ListView):
 # create new answer
 class AnswerCreateView(CreateView):
     model = Answer
-    # add form_class =
+    form_class = CreateAnswer
     template_name_suffix = '_create_form'
 
 
@@ -80,7 +82,7 @@ class UserListView(ListView):
 # create new user / registration
 class UserCreateView(CreateView):
     model = User
-    # add form_class =
+    form_class = CreateUserForm
     template_name_suffix = '_create_form'
     success_url = reverse_lazy('control-view')
 
