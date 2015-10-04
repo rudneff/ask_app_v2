@@ -2,13 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class User(models.Model):
+class User(User):
     avatar = models.ImageField()
 
-    meta = User
 
 class Tags(models.Model):
     text = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.text
 
 
 class Question(models.Model):
@@ -19,6 +21,9 @@ class Question(models.Model):
     tags = models.ForeignKey(Tags)
     rating = models.IntegerField(default=0)
 
+    def __str__(self):
+        return self.header
+
 
 class Answer(models.Model):
     body = models.CharField(max_length=200)
@@ -26,3 +31,6 @@ class Answer(models.Model):
     date = models.DateField()
     flag = models.BooleanField(default=False)
     rating = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.body
