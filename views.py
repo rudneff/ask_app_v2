@@ -6,6 +6,7 @@ from ask_app.forms import *
 
 
 # class for template
+
 class AskAppTemplateView(TemplateView):
     template_name = 'base.html'
 
@@ -42,7 +43,6 @@ class QuestionDetailView(DetailView):
 class QuestionUpdateView(UpdateView):
     model = Question
     template_name_suffix = '_update_form'
-
 
 
 class QuestionDeleteView(DeleteView):
@@ -92,7 +92,7 @@ class UserCreateView(CreateView):
     model = User
     form_class = CreateUserForm
     template_name_suffix = '_create_form'
-    success_url = reverse_lazy('control-view')
+    success_url = reverse_lazy('home-page')
 
 
 # see one user

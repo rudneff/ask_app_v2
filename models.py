@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 
 
 class User(User):
-    avatar = models.ImageField()
+    # made this field not required
+    avatar = models.ImageField(blank=True, null=True)
 
 
 class Tags(models.Model):
