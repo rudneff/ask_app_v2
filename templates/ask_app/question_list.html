@@ -1,6 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
-question list
+{% for question in object_list %}
+    <ul class="pricing-table">
+      <li class="title">{{ question.header }}</li>
+      <li class="price">{{ question.body }}</li>
+      <li class="description">{{ question.author }}</li>
+      <li class="bullet-item">{{ question.date }}</li>
+      <li class="bullet-item">{{ question.rating }}</li>
+      <li class="bullet-item">{{ question.tags.text }}</li>
+    </ul>
+{#    {% for answer in question.which_answer %}#}
+{#        {{ answer.boby }}#}
+{#    {% endfor %}#}
+    <hr>
+    <ul class="accordion" data-accordion>
+    {% for ans in answers %}
+
+          <li class="accordion-navigation">
+            <a href="#panel{{ ans.id }}a">{{ ans.body }}</a>
+            <div id="panel{{ ans.id }}a" class="content">
+                <p>{{ ans.author }}</p>
+                <p>{{ ans.rating }}</p>
+                <p>{{ ans.date }}</p>
+                <p>{{ ans.flag }}</p>
+            </div>
+          </li>
+    {% endfor %}
+    </ul>
+
+
+{% endfor %}
 
 {% endblock %}

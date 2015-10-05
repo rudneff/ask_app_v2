@@ -26,7 +26,7 @@
         <!-- Right Nav Section -->
         <ul class="right">
             {% if user.is_authenticated %}
-              <li class="active"><a href="#">ASK</a></li>
+              <li class="active"><a href="{% url 'question-create-page' %}">ASK</a></li>
               <li class="active"> <a href="#">avatar</a> </li>
               <li class="has-dropdown">
                 <a href="#">{{ user.username }}</a>
