@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="{% static 'ask_app/css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'ask_app/css/foundation.min.css' %}">
     <link rel="stylesheet" href="{% static 'ask_app/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'ask_app/css/mine.css' %}">
 
 </head>
 <body>
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><a href="#">ask app</a></h1>
+          <h1><a href="/">Ask app</a></h1>
         </li>
          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -36,6 +37,9 @@
               </li>
             {% else %}
               <li class="active">
+                  <a href="{% url 'login-page' %}">Register</a>
+              </li>
+                <li class="active">
                   <a href="#">Register</a>
               </li>
             {% endif %}
@@ -57,7 +61,7 @@
         </ul>
       </section>
     </nav>
-    <div class="row">
+    <div class="row content-margin">
         <div class="large-12">
             <div class="large-9 columns" role="content">
                 {% block content %}

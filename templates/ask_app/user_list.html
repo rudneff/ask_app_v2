@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-question list
+users list
 
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Create" />
-</form>
+{% for user in object_list %}
+    {{ user.username }}
+{% endfor %}
 
 {% endblock %}
