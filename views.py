@@ -9,6 +9,14 @@ from ask_app.forms import *
 class AskAppTemplateView(TemplateView):
     template_name = 'base.html'
 
+    # edit this func to see popular users ans tags
+    def get_context_data(self, **kwargs):
+        data = super(AskAppTemplateView, self).get_context_data(**kwargs)
+        #  edit here
+        data['best_users'] = User.objects.all()[:5]
+        data['tags'] = Tags.objects.all()[:5]
+        return data
+
 # classes for working with Question models
 
 
