@@ -31,16 +31,16 @@
               <li class="has-dropdown">
                 <a href="#">{{ user.username }}</a>
                 <ul class="dropdown">
-                  <li><a href="#">Change profile</a></li>
-                  <li><a href="#">Logout</a></li>
+                  <li><a href="{% url 'user-update-page' pk=user.id %}">Change profile</a></li>
+                  <li><a href="{% url 'logout-page' %}">Logout</a></li>
                 </ul>
               </li>
             {% else %}
               <li class="active">
-                  <a href="{% url 'login-page' %}">Register</a>
+                  <a href="{% url 'login-page' %}">Log In</a>
               </li>
                 <li class="active">
-                  <a href="#">Register</a>
+                  <a href="{% url 'user-create-page' %}">Register</a>
               </li>
             {% endif %}
         </ul>

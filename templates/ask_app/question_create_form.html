@@ -1,11 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-question create form
+<form action="" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Registration</legend>
 
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Create" />
+        <label>Header
+          {{ form.header }}
+        </label>
+        <label>Body
+          {{ form.body }}
+        </label>
+        <label>Tags
+          {{ form.tags }}
+        </label>
+
+        <input class="button" type="submit" value="Create" />
+
+      </fieldset>
+
 </form>
 
 {% endblock %}
