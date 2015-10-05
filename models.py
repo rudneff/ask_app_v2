@@ -29,7 +29,7 @@ class Question(models.Model):
 class Answer(models.Model):
     body = models.CharField(max_length=200)
     author = models.ForeignKey(User)
-    which_question = models.ForeignKey(Question)
+    which_question = models.ManyToManyField(Question)
     date = models.DateField()
     flag = models.BooleanField(default=False)
     rating = models.IntegerField(default=0)

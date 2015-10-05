@@ -16,4 +16,4 @@ class CreateQuestion(forms.ModelForm):
 class CreateAnswer(forms.ModelForm):
     class Meta:
         model = Answer
-        fields = ['body', 'which_question']
+        fields = ['body']
