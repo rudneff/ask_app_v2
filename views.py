@@ -5,6 +5,7 @@ from ask_app.models import *
 from ask_app.forms import *
 
 
+
 # class for template
 
 class AskAppTemplateView(TemplateView):
@@ -39,6 +40,7 @@ class QuestionCreateView(CreateView):
     model = Question
     form_class = CreateQuestion
     template_name_suffix = '_create_form'
+    success_url = reverse_lazy('home-page')
 
 
 # see one question
