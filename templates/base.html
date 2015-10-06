@@ -27,7 +27,7 @@
         <ul class="right">
             {% if user.is_authenticated %}
               <li class="active"><a href="{% url 'question-create-page' %}">ASK</a></li>
-              <li class="active"> <a href="#">avatar</a> </li>
+              <li class="active"> {{ user.avatar }} </li>
               <li class="has-dropdown">
                 <a href="#">{{ user.username }}</a>
                 <ul class="dropdown">
@@ -64,6 +64,7 @@
     <div class="row content-margin">
         <div class="large-12">
             <div class="large-9 columns" role="content">
+{#            <img src="{{ user.avatar.url }}">#}
                 {% block content %}
                 {% endblock %}
             </div>

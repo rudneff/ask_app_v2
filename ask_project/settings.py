@@ -97,6 +97,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+AUTH_USER_MODEL = 'ask_app.User'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'ask_app/static/ask_app/img/')
+MEDIA_URL = '/img/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

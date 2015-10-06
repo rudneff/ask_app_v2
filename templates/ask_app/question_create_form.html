@@ -3,22 +3,23 @@
 
 <form action="" method="post">
     {% csrf_token %}
-    <fieldset>
-        <legend>Registration</legend>
-
-        <label>Header
-          {{ form.header }}
-        </label>
-        <label>Body
-          {{ form.body }}
-        </label>
-        <label>Tags
-          {{ form.tags }}
-        </label>
+    {{ form.as_p }}
+{#    <fieldset>#}
+{#        <legend>Registration</legend>#}
+{##}
+{#        <label>Header#}
+{#          {{ form.header }}#}
+{#        </label>#}
+{#        <label>Body#}
+{#          {{ form.body }}#}
+{#        </label>#}
+{#        <label>Tags#}
+{#          {{ form.tags }}#}
+{#        </label>#}
 
         <input class="button" type="submit" value="Create" />
 
-      </fieldset>
+{#      </fieldset>#}
 
 </form>
 

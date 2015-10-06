@@ -1,6 +1,8 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from ask_app.views import *
+from ask_project import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 
@@ -31,4 +33,7 @@ urlpatterns = [
     url(r'^user/(?P<pk>\d+)/delete/$', UserDeleteView.as_view(), name='user-delete-page'),
 
     url(r'^admin/', include(admin.site.urls)),
-]
+
+    url(r'^img/(?P<path>.*)$', 'django.views.static.serve', name='image-page')
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

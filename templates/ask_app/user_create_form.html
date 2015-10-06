@@ -3,25 +3,29 @@
 
 <form action="" method="post">
     {% csrf_token %}
-    <fieldset>
-        <legend>Registration</legend>
-
-        <label>Username
-          {{ form.username }}
-        </label>
-        <label>Password
-          {{ form.password1 }}
-        </label>
-        <label>Password confirmation
-          {{ form.password2 }}
-        </label>
-        <label>Avatar
-          {{ form.avatar }}
-        </label>
+    {{ form.as_p }}
+{#    <fieldset>#}
+{#        <legend>Registration</legend>#}
+{##}
+{#        <label>Username#}
+{#          {{ form.username }}#}
+{#        </label>#}
+{#        <label>Email#}
+{#          {{ form.email }}#}
+{#        </label>#}
+{#        <label>Password#}
+{#          {{ form.password1 }}#}
+{#        </label>#}
+{#        <label>Password confirmation#}
+{#          {{ form.password2 }}#}
+{#        </label>#}
+{#        <label>Avatar#}
+{#          {{ form.avatar }}#}
+{#        </label>#}
 
         <input class="button" type="submit" value="Create" />
 
-      </fieldset>
+{#      </fieldset>#}
 
 </form>
 
