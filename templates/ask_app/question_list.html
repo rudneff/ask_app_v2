@@ -1,15 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% load staticfiles %}
+
 {% for question in object_list %}
-    <ul class="pricing-table">
-      <li class="title">{{ question.header }}</li>
-      <li class="price">{{ question.body }}</li>
-      <li class="description">{{ question.author }}</li>
-      <li class="bullet-item">{{ question.date }}</li>
-      <li class="bullet-item">{{ question.rating }}</li>
-      <li class="bullet-item">{{ question.tags.text }}</li>
-    </ul>
+
+    <div class="panel row">
+      <div class="large-3 columns">
+          <img class="avatar" src="{% static 'avatar.jpg' %}">
+          <div class="rating">
+              <a class=""><i class="fa fa-sort-asc fa-2x"></i></a>
+              <div class="number">{{ question.rating }}</div>
+              <a class=""><i class="fa fa-sort-desc fa-2x"></i></a>
+          </div>
+      </div>
+      <div class="large-6 columns end">
+         <a class="header" href="{% url 'question-page' pk=question.id %}">{{ question.header }}</a>
+         <div>{{ question.body }}</div>
+         <div>Author: {{ question.author }}</div>
+         <div>{{ question.tags.text }}</div>
+          <div>
+              <a href="{% url 'question-page' pk=question.id %}">answers</a>
+          </div>
+          <div>
+                {#  TODO: fix href  #}
+              <a href="#">tags</a>
+          </div>
+      </div>
+    </div>
+
 {#    {% for answer in question.which_answer %}#}
 {#        {{ answer.boby }}#}
 {#    {% endfor %}#}

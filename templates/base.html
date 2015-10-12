@@ -27,7 +27,7 @@
         <ul class="right">
             {% if user.is_authenticated %}
               <li class="active"><a href="{% url 'question-create-page' %}">ASK</a></li>
-              <li class="active"> {{ user.avatar }} </li>
+              <li class="active"> <img class="avatar" src="{% static 'avatar.jpg' %}"> </li>
               <li class="has-dropdown">
                 <a href="#">{{ user.username }}</a>
                 <ul class="dropdown">
@@ -40,7 +40,7 @@
                   <a href="{% url 'login-page' %}">Log In</a>
               </li>
                 <li class="active">
-                  <a href="{% url 'user-create-page' %}">Register</a>
+                  <a class="register" href="{% url 'user-create-page' %}">Register</a>
               </li>
             {% endif %}
         </ul>
