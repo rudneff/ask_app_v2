@@ -1,3 +1,29 @@
 .content-margin{
     margin-top: 1.25rem;
 }
+
+.avatar {
+    margin: 0 20px;
+    height: 2.8125rem;;
+}
+
+.register {
+    border-left: 1px solid;
+}
+
+.user-info {
+
+}
+
+.rating {
+    margin: 5px 0 0 32px;
+
+}
+.number{
+    margin: 0 5px;
+}
+
+.header {
+    font-size: 24px;
+    text-decoration: underline;
+}
