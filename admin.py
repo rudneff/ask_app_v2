@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from ask_app.models import *
 from ask_app.forms import CreateUserForm, ChangeUserForm
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 
 
 class NewUserAdmin(UserAdmin):

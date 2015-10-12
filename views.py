@@ -1,3 +1,4 @@
+from django.contrib.auth import login, authenticate
 from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import TemplateView, DeleteView, DetailView, ListView, UpdateView, CreateView, FormView
@@ -5,9 +6,7 @@ from ask_app.models import *
 from ask_app.forms import *
 
 
-
 # class for template
-
 class AskAppTemplateView(TemplateView):
     template_name = 'base.html'
 
@@ -19,12 +18,14 @@ class AskAppTemplateView(TemplateView):
         data['tags'] = Tags.objects.all()[:5]
         return data
 
+
 # classes for working with Question models
 
 
 # show all questions
 class QuestionListView(ListView):
     model = Question
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         data = super(QuestionListView, self).get_context_data(**kwargs)
@@ -104,6 +105,12 @@ class UserCreateView(CreateView):
     template_name_suffix = '_create_form'
     success_url = reverse_lazy('home-page')
 
+    def form_valid(self, form):
+        valid = super(UserCreateView, self).form_valid(form)
+        username, password = form.cleaned_data.get('username'), form.cleaned_data.get('password1')
+        new_user = authenticate(username=username, password=password)
+        login(self.request, new_user)
+        return valid
 
 # see one user
 class UserDetailView(DetailView):
@@ -113,6 +120,7 @@ class UserDetailView(DetailView):
 # change one user
 class UserUpdateView(UpdateView):
     model = User
+    form_class = ChangeUserForm
     template_name_suffix = '_update_form'
 
 

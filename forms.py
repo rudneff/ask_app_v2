@@ -6,7 +6,7 @@ from ask_app.models import *
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
-        exclude = ['rating']
+        fields = ['username', 'email', 'password1', 'password2', 'avatar']
 
 
 class ChangeUserForm(UserCreationForm):

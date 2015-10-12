@@ -27,3 +27,11 @@
     font-size: 24px;
     text-decoration: underline;
 }
+
+.question-body{
+    margin-bottom: 20px;
+}
+
+.ans-count {
+    margin-right: 20px;
+}
