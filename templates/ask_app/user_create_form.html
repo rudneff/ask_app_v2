@@ -1,31 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if form.errors %}
+    <small class="error">Your passwords didn't match</small>
+{% endif %}
+
 <form action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-{#    <fieldset>#}
-{#        <legend>Registration</legend>#}
-{##}
-{#        <label>Username#}
-{#          {{ form.username }}#}
-{#        </label>#}
-{#        <label>Email#}
-{#          {{ form.email }}#}
-{#        </label>#}
-{#        <label>Password#}
-{#          {{ form.password1 }}#}
-{#        </label>#}
-{#        <label>Password confirmation#}
-{#          {{ form.password2 }}#}
-{#        </label>#}
-{#        <label>Avatar#}
-{#          {{ form.avatar }}#}
-{#        </label>#}
+{#    {{ form.as_p }}#}
+    <fieldset>
+        <legend>Registration</legend>
+
+        <label>Username
+          {{ form.username }}
+        </label>
+        <label>Email
+          {{ form.email }}
+        </label>
+        <label>Password
+          {{ form.password1 }}
+        </label>
+        <label>Password confirmation
+          {{ form.password2 }}
+        </label>
+        <label>Avatar
+          {{ form.avatar }}
+        </label>
 
         <input class="button" type="submit" value="Create" />
 
-{#      </fieldset>#}
+      </fieldset>
 
 </form>
 

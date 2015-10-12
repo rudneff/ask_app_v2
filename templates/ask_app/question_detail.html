@@ -1,6 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
-question detail
+{% load staticfiles %}
+
+ <div class="panel row">
+  <div class="large-3 columns">
+      <img class="avatar" src="{% static 'avatar.jpg' %}">
+      <div class="rating">
+          <a class=""><i class="fa fa-sort-asc fa-2x"></i></a>
+          <div class="number">{{ question.rating }}</div>
+          <a class=""><i class="fa fa-sort-desc fa-2x"></i></a>
+      </div>
+  </div>
+  <div class="large-6 columns end">
+     <p class="header">{{ question.header }}</p>
+     <div class="question-body">{{ question.body }}</div>
+     <div>Author: {{ question.author }}</div>
+      <div>
+          <a class="ans-count" href="{% url 'question-page' pk=question.id %}">answers {# TODO: счетчик #}</a>
+          {#  TODO: fix href  #}
+          <a href="#">Tags</a>
+      </div>
+  </div>
+</div>
 
 {% endblock %}
