@@ -17,10 +17,10 @@ class ChangeUserForm(UserCreationForm):
         exclude = ['rating']
 
 
-class CreateQuestion(forms.ModelForm):
+class CreateQuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        exclude = ['rating']
+        fields = ['header', 'body', 'tags']
 
 
 class CreateAnswer(forms.ModelForm):

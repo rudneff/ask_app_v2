@@ -39,9 +39,20 @@ class QuestionListView(ListView):
 # create one question
 class QuestionCreateView(CreateView):
     model = Question
-    form_class = CreateQuestion
+    form_class = CreateQuestionForm
     template_name_suffix = '_create_form'
     success_url = reverse_lazy('home-page')
+
+    def get_context_data(self, **kwargs):
+        data = super(QuestionCreateView, self).get_context_data(**kwargs)
+        #  edit here
+        data['best_users'] = User.objects.all()[:5]
+        data['tags'] = Tags.objects.all()[:5]
+        return data
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super(QuestionCreateView, self).form_valid(form)
 
 
 # see one question
@@ -119,6 +130,7 @@ class UserCreateView(CreateView):
         data['best_users'] = User.objects.all()[:5]
         data['tags'] = Tags.objects.all()[:5]
         return data
+
 
 # see one user
 class UserDetailView(DetailView):
