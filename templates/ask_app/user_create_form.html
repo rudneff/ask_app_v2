@@ -11,16 +11,25 @@
     <fieldset>
         <legend>Registration</legend>
 
-        <label>Username
+        <label>
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Required field">
+                Username
+            </span>
           {{ form.username }}
         </label>
         <label>Email
           {{ form.email }}
         </label>
-        <label>Password
+        <label>
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Required field">
+                Password
+            </span>
           {{ form.password1 }}
         </label>
-        <label>Password confirmation
+        <label>
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Required field">
+                Password confirmation
+            </span>
           {{ form.password2 }}
         </label>
         <label>Avatar

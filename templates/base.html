@@ -95,9 +95,13 @@
 
 
     <script src="{% static 'ask_app/js/jquery.js' %}"></script>
+    <script src="{% static 'ask_app/js/modernizr.js' %}"></script>
     <script src="{% static 'ask_app/js/foundation.min.js' %}"></script>
+    <script src="{% static 'ask_app/js/foundation.tooltip.js' %}"></script>
     {#  script for foundation initialization  #}
-    <script> $(document).foundation(); </script>
+    <script>
+        $(document).foundation();
+    </script>
 
 </body>
 </html>
