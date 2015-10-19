@@ -27,7 +27,11 @@
         <ul class="right">
             {% if user.is_authenticated %}
               <li class="active"><a href="{% url 'question-create-page' %}">ASK</a></li>
-              <li class="active"> <img class="avatar" src="{% static 'avatar.jpg' %}"> </li>
+                {% if user.avatar %}
+                    <li class="active"> <img class="avatar" src="{{ user.avatar.url }}"> </li>
+                {% else %}
+                    <li class="active"> <img class="avatar" src="{% static 'avatar.jpg' %}"> </li>
+                {% endif %}
               <li class="has-dropdown">
                 <a href="#">{{ user.username }}</a>
                 <ul class="dropdown">

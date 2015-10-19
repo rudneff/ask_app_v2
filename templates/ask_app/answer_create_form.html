@@ -1,11 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-answer create form
+<form action="" method="post">
+    {% csrf_token %}
 
-<form action="" method="post">{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Create" />
+    <fieldset>
+        <legend>Create Answer</legend>
+
+        <label>
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Print your answer here">
+                Body
+            </span>
+          {{ form.body }}
+        </label>
+
+        <input class="button" type="submit" value="Answer" />
+
+      </fieldset>
+
 </form>
 
 
