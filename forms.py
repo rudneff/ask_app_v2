@@ -1,15 +1,19 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, ReadOnlyPasswordHashField
+from django.forms.widgets import ClearableFileInput
 from ask_app.models import *
 
 
 class CreateUserForm(UserCreationForm):
+    avatar = forms.ImageField(required=False)
+
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'avatar']
+        fields = ['username', 'email', 'password1', 'password2']
 
 
-class ChangeUserForm(UserCreationForm):
+class ChangeUserForm(forms.ModelForm):
+    avatar = forms.ImageField(required=False, widget=ClearableFileInput)
     password = ReadOnlyPasswordHashField()
 
     class Meta:
@@ -26,4 +30,4 @@ class CreateQuestionForm(forms.ModelForm):
 class CreateAnswer(forms.ModelForm):
     class Meta:
         model = Answer
-        exclude = ['rating']
+        fields = ['body']
