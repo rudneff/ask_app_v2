@@ -31,8 +31,6 @@ class QuestionListView(ListView):
         data = super(QuestionListView, self).get_context_data(**kwargs)
         data['best_users'] = User.objects.all()[:5]
         data['tags'] = Tags.objects.all()[:3]
-        # TODO:need to filter this
-        data['answers'] = Answer.objects.filter()
         return data
 
 
