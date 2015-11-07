@@ -1,7 +1,7 @@
 import datetime
 from django.contrib.auth.models import UserManager, AbstractUser
 from django.db import models
-from ask_project.settings import MEDIA_ROOT, MEDIA_URL
+from managers import *
 
 
 class User(AbstractUser):
@@ -31,6 +31,8 @@ class Question(models.Model):
     date = models.DateField(default=datetime.date.today)
     tags = models.ManyToManyField(Tags)
     rating = models.IntegerField(default=0)
+
+    my = QuestionManager()
 
     def __unicode__(self):
         return self.header

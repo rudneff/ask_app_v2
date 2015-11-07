@@ -21,10 +21,11 @@ class AskAppTemplateView(TemplateView):
 
 # classes for working with Question models
 
-
 # show all questions
 class QuestionListView(ListView):
     model = Question
+    # use CustomManeger
+    queryset = Question.my.newest()
     paginate_by = 5
 
     def get_context_data(self, **kwargs):
