@@ -46,7 +46,24 @@
     <hr>
 {% endfor %}
 
+{% if form.errors %}
+    <small class="error">Your field is empty</small>
+{% endif %}
 
+<form action="" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Add answer</legend>
+
+        <label>
+            {{ form.body }}
+        </label>
+
+        <input class="button" type="submit" value="Add" />
+
+      </fieldset>
+
+</form>
 
 
 {% endblock %}

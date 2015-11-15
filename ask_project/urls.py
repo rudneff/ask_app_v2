@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^answer/(?P<pk>\d+)/$', AnswerDetailView.as_view(), name='answer-page'),
     url(r'^answer/(?P<pk>\d+)/update/$', UserUpdateView.as_view(), name='answer-update-page'),
     url(r'^answers/$', AnswerListView.as_view(), name='answer-list-page'),
-    url(r'^answer/create/$', AnswerCreateView.as_view(), name='answer-create-page'),
+    # url(r'^answer/create/$', AnswerCreateView.as_view(), name='answer-create-page'),
     url(r'^answer/(?P<pk>\d+)/delete/$', AnswerDeleteView.as_view(), name='answer-delete-page'),
 
     # user pages
