@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+import datetime
 import django.contrib.auth.models
 import django.utils.timezone
 from django.conf import settings
@@ -49,7 +50,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('body', models.CharField(max_length=200)),
-                ('date', models.DateField()),
+                ('date', models.DateField(default=datetime.date.today)),
                 ('flag', models.BooleanField(default=False)),
                 ('rating', models.IntegerField(default=0)),
                 ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
@@ -61,7 +62,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('header', models.CharField(max_length=100)),
                 ('body', models.CharField(max_length=200)),
-                ('date', models.DateField()),
+                ('date', models.DateField(default=datetime.date.today)),
                 ('rating', models.IntegerField(default=0)),
                 ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
@@ -81,6 +82,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='answer',
             name='which_question',
-            field=models.ManyToManyField(to='ask_app.Question'),
+            field=models.ForeignKey(to='ask_app.Question'),
         ),
     ]

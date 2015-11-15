@@ -41,8 +41,7 @@ class Question(models.Model):
 class Answer(models.Model):
     body = models.CharField(max_length=200)
     author = models.ForeignKey(User)
-    # TODO: change to ForeignKey
-    which_question = models.ManyToManyField(Question)
+    which_question = models.ForeignKey(Question)
     date = models.DateField(default=datetime.date.today)
     flag = models.BooleanField(default=False)
     rating = models.IntegerField(default=0)

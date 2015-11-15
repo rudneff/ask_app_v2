@@ -1,7 +1,9 @@
+# coding=utf-8
 from django.contrib.auth import login, authenticate
-from django.shortcuts import render
+from django.http import HttpResponseForbidden
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import TemplateView, DeleteView, DetailView, ListView, UpdateView, CreateView, FormView
+from django.views.generic import TemplateView, DeleteView, DetailView, ListView, UpdateView, CreateView, FormView, View
+from django.views.generic.detail import SingleObjectMixin
 from ask_app.models import *
 from ask_app.forms import *
 
@@ -54,10 +56,53 @@ class QuestionCreateView(CreateView):
         return super(QuestionCreateView, self).form_valid(form)
 
 
-# see one question
-class QuestionDetailView(DetailView):
+# see one question, if we had POST - FormView, GET - DetailView
+class QuestionDetailView(View):
+    def get(self, request, *args, **kwargs):
+        view = QuestionDetailViewShow.as_view()
+        return view(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        view = QuestionFormViewAddAnswer.as_view()
+        return view(request, *args, **kwargs)
+
+
+class QuestionDetailViewShow(DetailView):
     model = Question
     success_url = reverse_lazy('home-page')
+
+    # function to add form
+    def get_context_data(self, **kwargs):
+        context = super(QuestionDetailViewShow, self).get_context_data(**kwargs)
+        context['form'] = CreateAnswerForm()
+        return context
+
+
+class QuestionFormViewAddAnswer(SingleObjectMixin, FormView):
+    model = Question
+    form_class = CreateAnswerForm
+    success_url = reverse_lazy('home-page')
+    template_name = 'ask_app/question_detail.html'
+
+    # дичь - рефакторь
+    def post(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return HttpResponseForbidden()
+        self.object = self.get_object()
+        return super(QuestionFormViewAddAnswer, self).post(request, *args, **kwargs)
+
+    # дичь - рефакторь
+    def form_valid(self, form):
+        valid = super(QuestionFormViewAddAnswer, self).form_valid(form)
+        # add elements to form, then save
+        form.instance.author = self.request.user
+        form.instance.which_question = self.get_queryset().get(pk=self.object.id)
+        form.save()
+        # answer.save()
+        return valid
+
+    def get_success_url(self):
+        return reverse_lazy('question-page', kwargs={'pk': self.object.pk})
 
 
 # update one question
@@ -75,13 +120,6 @@ class QuestionDeleteView(DeleteView):
 # display all elements
 class AnswerListView(ListView):
     model = Answer
-
-
-# create new answer
-class AnswerCreateView(CreateView):
-    model = Answer
-    form_class = CreateAnswer
-    template_name_suffix = '_create_form'
 
 
 # see one answer
