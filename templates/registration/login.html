@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if form.errors %}
+    <small class="error">Your username and password didn't match. Please try again.</small>
+{% endif %}
+
+    <form method="post" action="{% url 'login-page' %}">
+    {% csrf_token %}
+      <fieldset>
+        <legend>Log In</legend>
+
+        <label>Username
+          {{ form.username }}
+        </label>
+        <label>Password
+          {{ form.password }}
+        </label>
+          <input class="button" type="submit" value="Sign In" />
+          <input type="hidden" name="next" value="{% url 'home-page' %}" />
+
+      </fieldset>
+
+    </form>
+
+{% endblock %}

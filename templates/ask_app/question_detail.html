@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load staticfiles %}
+
+ <div class="panel row">
+  <div class="large-3 columns">
+      {% if question.author.avatar %}
+            <img class="avatar" src="{{ question.author.avatar.url }}">
+      {% else %}
+            <img class="avatar" src="{% static 'avatar.jpg' %}">
+      {% endif %}
+      <div class="rating">
+          <a class=""><i class="fa fa-sort-asc fa-2x"></i></a>
+          <div class="number">{{ question.rating }}</div>
+          <a class=""><i class="fa fa-sort-desc fa-2x"></i></a>
+      </div>
+  </div>
+  <div class="large-6 columns end">
+     <p class="header">{{ question.header }}</p>
+     <div class="question-body">{{ question.body }}</div>
+     <div>Author: {{ question.author }}</div>
+      <div>
+          <a class="ans-count" href="{% url 'question-page' pk=question.id %}">answers {# TODO: счетчик #}</a>
+          {#  TODO: fix href  #}
+          <a href="#">Tags</a>
+      </div>
+  </div>
+</div>
+    <hr>
+{% for ans in question.answer_set.all %}
+    <div class="panel row">
+            <div class="large-2 columns">
+                123
+            </div>
+            <div class="large-4 columns end">
+                <a href="#panel{{ ans.id }}a">{{ ans.body }}</a>
+                <div id="panel{{ ans.id }}a" class="content">
+                    <p>{{ ans.author }}</p>
+                    <p>{{ ans.rating }}</p>
+                    <p>{{ ans.date }}</p>
+                    <p>{{ ans.flag }}</p>
+                </div>
+            </div>
+    </div>
+    <hr>
+{% endfor %}
+
+{% if form.errors %}
+    <small class="error">Your field is empty</small>
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Add answer</legend>
+
+        <label>
+            {{ form.body }}
+        </label>
+
+        <input class="button" type="submit" value="Add" />
+
+      </fieldset>
+
+</form>
+
+
+{% endblock %}

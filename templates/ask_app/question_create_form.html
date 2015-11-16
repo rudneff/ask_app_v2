@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+{#    {{ form.as_p }}#}
+    <fieldset>
+        <legend>ASK</legend>
+
+        <label>
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Place here your main idea of a question">
+                Header
+            </span>
+          {{ form.header }}
+        </label>
+        <label>
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Write your problem">
+                Body
+            </span>
+          {{ form.body }}
+        </label>
+        <label>
+            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Choose tags">
+                Tags
+            </span>
+          {{ form.tags }}
+        </label>
+
+        <input class="button" type="submit" value="Create" />
+
+      </fieldset>
+
+</form>
+
+{% endblock %}
